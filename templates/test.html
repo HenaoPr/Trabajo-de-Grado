@@ -1,0 +1,1444 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Big Five Personality Test</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                text-align: center;
+                padding: 50px;
+            }
+            .container {
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            h1 {
+                color: #333;
+            }
+            .question {
+                display: none; /* Ocultamos las preguntas por defecto */
+            }
+            .active {
+                display: block; /* Mostramos la pregunta activa */
+            }
+            .button {
+                background-color: #3498db;
+                color: white;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-top: 20px;
+                display: inline-block;
+                cursor: pointer;
+            }
+            .button:hover {
+                background-color: #2980b9;
+            }
+            .radio-group {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Big Five Personality Test</h1>
+            <form id="testForm" action="/submit" method="POST">
+                <!-- Preguntas -->
+
+                <div class="question active" id="question1">
+                    <label for="question1">Disfruto explorar ideas nuevas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question1" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question1" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question1" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question1" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question1" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question2">
+                    <label for="question2">Disfruto aprendiendo sobre culturas diferentes.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question2" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question2" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question2" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question2" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question2" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question3">
+                    <label for="question3">Me siento cómodo con ideas poco convencionales.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question3" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question3" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question3" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question3" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question3" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question4">
+                    <label for="question4">Aprecio el arte en todas sus formas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question4" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question4" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question4" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question4" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question4" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question5">
+                    <label for="question5">Prefiero resolver problemas creativamente en lugar de seguir una fórmula establecida.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question5" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question5" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question5" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question5" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question5" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question6">
+                    <label for="question6">Me encanta leer libros sobre temas que no conozco.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question6" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question6" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question6" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question6" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question6" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question7">
+                    <label for="question7">Me fascinan las nuevas teorías y conceptos.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question7" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question7" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question7" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question7" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question7" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question8">
+                    <label for="question8">Valoro la creatividad en los demás.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question8" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question8" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question8" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question8" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question8" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question9">
+                    <label for="question9">Me gusta experimentar con diferentes formas de hacer las cosas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question9" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question9" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question9" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question9" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question9" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+                <div class="question" id="question10">
+                    <label for="question10">Tengo una gran imaginación.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question10" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question10" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question10" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question10" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question10" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question11">
+                    <label for="question11">Me entusiasma descubrir cosas nuevas en la ciencia o la tecnología.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question11" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question11" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question11" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question11" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question11" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question12">
+                    <label for="question12">Aprecio la música compleja y emocional.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question12" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question12" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question12" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question12" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question12" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question13">
+                    <label for="question13">Prefiero variar mi rutina en lugar de hacer lo mismo todos los días.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question13" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question13" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question13" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question13" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question13" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question14">
+                    <label for="question14">Me atraen las discusiones filosóficas o abstractas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question14" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question14" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question14" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question14" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question14" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question15">
+                    <label for="question15">Encuentro inspiración en mi entorno.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question15" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question15" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question15" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question15" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question15" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question16">
+                    <label for="question16">Me aburro con tareas demasiado repetitivas o rutinarias.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question16" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question16" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question16" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question16" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question16" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question17">
+                    <label for="question17">Valoro los debates intelectuales sobre temas profundos.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question17" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question17" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question17" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question17" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question17" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question18">
+                    <label for="question18">Me interesa conocer la historia y cómo ha evolucionado el mundo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question18" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question18" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question18" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question18" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question18" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question19">
+                    <label for="question19">Me siento estimulado por el arte moderno y vanguardista.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question19" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question19" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question19" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question19" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question19" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question20">
+                    <label for="question20">Me esfuerzo por aprender cosas nuevas por pura curiosidad.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question20" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question20" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question20" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question20" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question20" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question21">
+                    <label for="question21">Prefiero las experiencias que desafían mis creencias.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question21" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question21" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question21" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question21" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question21" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question22">
+                    <label for="question22">Me gusta tomar decisiones basadas en ideas innovadoras.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question22" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question22" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question22" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question22" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question22" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question23">
+                    <label for="question23">Disfruto del pensamiento abstracto más que del práctico.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question23" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question23" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question23" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question23" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question23" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question24">
+                    <label for="question24">Me siento atraído por las experiencias inusuales o únicas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question24" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question24" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question24" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question24" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question24" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question25">
+                    <label for="question25">Siempre cumplo con mis tareas a tiempo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question25" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question25" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question25" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question25" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question25" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question26">
+                    <label for="question26">Planifico mis actividades cuidadosamente.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question26" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question26" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question26" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question26" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question26" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question27">
+                    <label for="question27">Me organizo bien para cumplir con mis obligaciones.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question27" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question27" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question27" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question27" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question27" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question28">
+                    <label for="question28">Soy muy meticuloso en mi trabajo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question28" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question28" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question28" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question28" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question28" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question29">
+                    <label for="question29">Prefiero hacer las cosas paso a paso para asegurar buenos resultados.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question29" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question29" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question29" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question29" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question29" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question30">
+                    <label for="question30">Me esfuerzo por ser lo más eficiente posible.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question30" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question30" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question30" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question30" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question30" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question31">
+                    <label for="question31">Me considero una persona confiable.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question31" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question31" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question31" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question31" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question31" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question32">
+                    <label for="question32">Me siento incómodo cuando no cumplo con mis promesas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question32" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question32" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question32" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question32" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question32" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question33">
+                    <label for="question33">Me gusta establecer metas a largo plazo y trabajar para alcanzarlas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question33" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question33" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question33" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question33" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question33" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question34">
+                    <label for="question34">Mantengo mi espacio de trabajo limpio y ordenado.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question34" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question34" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question34" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question34" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question34" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question35">
+                    <label for="question35">Cuando comienzo algo, siempre me esfuerzo por terminarlo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question35" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question35" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question35" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question35" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question35" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question36">
+                    <label for="question36">Me siento satisfecho cuando logro completar mis tareas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question36" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question36" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question36" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question36" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question36" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question37">
+                    <label for="question37">Prefiero seguir un horario o plan para mis actividades diarias.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question37" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question37" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question37" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question37" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question37" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question38">
+                    <label for="question38">Me aseguro de que los detalles sean correctos antes de dar por terminada una tarea.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question38" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question38" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question38" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question38" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question38" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question39">
+                    <label for="question39">Me esfuerzo por evitar distracciones y concentrarme en lo que debo hacer.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question39" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question39" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question39" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question39" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question39" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question40">
+                    <label for="question40">Trabajo duro incluso si la tarea es aburrida o difícil.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question40" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question40" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question40" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question40" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question40" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question41">
+                    <label for="question41">Siempre llevo un control de mis gastos y finanzas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question41" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question41" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question41" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question41" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question41" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question42">
+                    <label for="question42">Me aseguro de tener todo lo que necesito antes de comenzar un proyecto.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question42" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question42" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question42" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question42" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question42" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question43">
+                    <label for="question43">Me esfuerzo por evitar cometer errores.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question43" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question43" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question43" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question43" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question43" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question44">
+                    <label for="question44">Me gusta sentir que he hecho un trabajo bien hecho.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question44" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question44" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question44" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question44" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question44" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question45">
+                    <label for="question45">Planifico mis días con antelación.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question45" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question45" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question45" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question45" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question45" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question46">
+                    <label for="question46">Evito posponer las cosas que debo hacer.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question46" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question46" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question46" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question46" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question46" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question47">
+                    <label for="question47">Soy muy cuidadoso al seguir instrucciones.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question47" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question47" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question47" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question47" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question47" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question48">
+                    <label for="question48">Siempre me esfuerzo por ser puntual en mis compromisos.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question48" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question48" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question48" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question48" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question48" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question49">
+                    <label for="question49">Me gusta estar rodeado de gente.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question49" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question49" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question49" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question49" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question49" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question50">
+                    <label for="question50">Disfruto ser el centro de atención en los eventos sociales.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question50" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question50" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question50" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question50" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question50" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question51">
+                    <label for="question51">Encuentro energía al interactuar con otras personas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question51" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question51" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question51" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question51" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question51" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question52">
+                    <label for="question52">Prefiero los entornos sociales llenos de actividad.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question52" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question52" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question52" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question52" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question52" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question53">
+                    <label for="question53">Me siento cómodo liderando a otras personas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question53" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question53" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question53" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question53" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question53" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question54">
+                    <label for="question54">Disfruto participar en conversaciones animadas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question54" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question54" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question54" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question54" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question54" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question55">
+                    <label for="question55">Me gusta conocer gente nueva y hacer nuevos amigos.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question55" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question55" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question55" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question55" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question55" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question56">
+                    <label for="question56">Encuentro emocionantes los eventos grandes y concurridos.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question56" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question56" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question56" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question56" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question56" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question57">
+                    <label for="question57">Me gusta ser espontáneo y aprovechar oportunidades para socializar.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question57" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question57" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question57" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question57" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question57" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question58">
+                    <label for="question58">Prefiero trabajar en equipo que trabajar solo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question58" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question58" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question58" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question58" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question58" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question59">
+                    <label for="question59">Me siento cómodo expresando mis opiniones en público.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question59" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question59" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question59" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question59" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question59" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question60">
+                    <label for="question60">Soy una persona enérgica y entusiasta.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question60" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question60" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question60" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question60" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question60" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+                <div class="question" id="question61">
+                    <label for="question61">Disfruto de los entornos con mucha actividad y ruido.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question61" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question61" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question61" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question61" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question61" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question62">
+                    <label for="question62">Prefiero salir y hacer algo emocionante a quedarme en casa.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question62" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question62" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question62" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question62" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question62" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question63">
+                    <label for="question63">Me gusta hacer nuevas conexiones sociales.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question63" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question63" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question63" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question63" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question63" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question64">
+                    <label for="question64">Me siento incómodo cuando paso demasiado tiempo solo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question64" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question64" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question64" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question64" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question64" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question65">
+                    <label for="question65">Me encanta organizar y asistir a eventos sociales.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question65" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question65" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question65" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question65" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question65" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question66">
+                    <label for="question66">Me siento más vivo en situaciones dinámicas y rápidas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question66" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question66" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question66" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question66" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question66" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question67">
+                    <label for="question67">Prefiero entornos donde haya muchas oportunidades para interactuar.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question67" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question67" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question67" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question67" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question67" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question68">
+                    <label for="question68">Me considero una persona extrovertida y sociable.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question68" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question68" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question68" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question68" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question68" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question69">
+                    <label for="question69">Disfruto participar en actividades grupales.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question69" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question69" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question69" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question69" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question69" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question70">
+                    <label for="question70">Prefiero estar con otros a estar solo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question70" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question70" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question70" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question70" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question70" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question71">
+                    <label for="question71">Encuentro fácil entablar conversaciones con personas que acabo de conocer.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question71" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question71" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question71" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question71" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question71" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question72">
+                    <label for="question72">Me siento cómodo siendo el anfitrión de reuniones o fiestas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question72" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question72" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question72" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question72" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question72" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question73">
+                    <label for="question73">Me gusta ayudar a las personas siempre que puedo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question73" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question73" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question73" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question73" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question73" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question74">
+                    <label for="question74">Suelo confiar en los demás.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question74" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question74" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question74" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question74" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question74" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question75">
+                    <label for="question75">Me esfuerzo por ver las cosas desde la perspectiva de otras personas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question75" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question75" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question75" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question75" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question75" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question76">
+                    <label for="question76">Evito discutir, prefiero resolver los conflictos pacíficamente.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question76" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question76" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question76" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question76" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question76" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question77">
+                    <label for="question77">Me considero una persona empática.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question77" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question77" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question77" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question77" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question77" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question78">
+                    <label for="question78">Prefiero cooperar que competir.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question78" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question78" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question78" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question78" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question78" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question79">
+                    <label for="question79">Me siento mal cuando veo a otros sufrir.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question79" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question79" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question79" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question79" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question79" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question80">
+                    <label for="question80">Me gusta apoyar a mis amigos y familiares en tiempos difíciles.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question80" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question80" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question80" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question80" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question80" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question81">
+                    <label for="question81">Trato de ser amable y considerado con las personas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question81" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question81" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question81" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question81" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question81" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question82">
+                    <label for="question82">Me esfuerzo por llevarme bien con los demás.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question82" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question82" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question82" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question82" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question82" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question83">
+                    <label for="question83">Soy bueno escuchando a las personas y entendiendo sus preocupaciones.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question83" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question83" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question83" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question83" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question83" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question84">
+                    <label for="question84">Me resulta fácil perdonar a los demás cuando cometen errores.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question84" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question84" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question84" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question84" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question84" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question85">
+                    <label for="question85">Prefiero ser modesto en lugar de presumir de mis logros.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question85" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question85" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question85" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question85" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question85" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question86">
+                    <label for="question86">Trato de evitar herir los sentimientos de otras personas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question86" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question86" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question86" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question86" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question86" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question87">
+                    <label for="question87">Suelo confiar en que la gente tiene buenas intenciones.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question87" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question87" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question87" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question87" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question87" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question88">
+                    <label for="question88">Me considero una persona generosa.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question88" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question88" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question88" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question88" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question88" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question89">
+                    <label for="question89">Prefiero trabajar en equipo donde todos ganen.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question89" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question89" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question89" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question89" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question89" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question90">
+                    <label for="question90">Me esfuerzo por ser paciente con los demás.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question90" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question90" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question90" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question90" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question90" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question91">
+                    <label for="question91">Disfruto hacer favores o pequeñas atenciones para los demás.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question91" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question91" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question91" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question91" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question91" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question92">
+                    <label for="question92">Trato de mantener la paz y la armonía en mis relaciones.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question92" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question92" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question92" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question92" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question92" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question93">
+                    <label for="question93">Prefiero hacer compromisos en lugar de pelear por tener la razón.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question93" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question93" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question93" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question93" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question93" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question94">
+                    <label for="question94">Me gusta hacer feliz a las personas que me rodean.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question94" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question94" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question94" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question94" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question94" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question95">
+                    <label for="question95">Suelo ceder para evitar conflictos.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question95" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question95" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question95" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question95" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question95" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question96">
+                    <label for="question96">Me siento satisfecho cuando hago un buen acto hacia alguien.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question96" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question96" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question96" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question96" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question96" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question97">
+                    <label for="question97">A menudo me siento ansioso sin razón aparente.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question97" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question97" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question97" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question97" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question97" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question98">
+                    <label for="question98">Me preocupo mucho por cosas que podrían salir mal.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question98" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question98" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question98" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question98" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question98" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question99">
+                    <label for="question99">A veces me siento muy irritable sin motivo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question99" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question99" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question99" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question99" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question99" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question100">
+                    <label for="question100">A menudo me siento abrumado por el estrés.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question100" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question100" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question100" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question100" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question100" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question101">
+                    <label for="question101">Me cuesta relajarme cuando tengo preocupaciones.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question101" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question101" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question101" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question101" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question101" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question102">
+                    <label for="question102">Suelo sentirme inseguro en mis relaciones con los demás.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question102" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question102" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question102" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question102" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question102" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question103">
+                    <label for="question103">A menudo me preocupo por lo que otros piensan de mí.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question103" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question103" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question103" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question103" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question103" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question104">
+                    <label for="question104">Me siento emocionalmente agotado con facilidad.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question104" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question104" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question104" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question104" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question104" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question105">
+                    <label for="question105">Tengo dificultades para manejar la frustración.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question105" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question105" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question105" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question105" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question105" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question106">
+                    <label for="question106">Me siento nervioso cuando las cosas no salen como espero.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question106" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question106" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question106" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question106" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question106" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question107">
+                    <label for="question107">Me cuesta mantener la calma en situaciones de estrés.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question107" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question107" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question107" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question107" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question107" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question108">
+                    <label for="question108">Me siento deprimido o triste con frecuencia.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question108" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question108" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question108" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question108" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question108" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question109">
+                    <label for="question109">A veces tengo pensamientos muy negativos sobre mí mismo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question109" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question109" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question109" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question109" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question109" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question110">
+                    <label for="question110">Me siento incómodo en situaciones nuevas o desconocidas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question110" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question110" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question110" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question110" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question110" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question111">
+                    <label for="question111">Me preocupo demasiado por mi salud.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question111" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question111" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question111" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question111" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question111" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question112">
+                    <label for="question112">Me afecta mucho cuando las cosas no salen como las planeo.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question112" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question112" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question112" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question112" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question112" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question113">
+                    <label for="question113">A menudo me preocupo por el futuro.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question113" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question113" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question113" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question113" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question113" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question114">
+                    <label for="question114">Me siento inseguro cuando enfrento un desafío.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question114" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question114" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question114" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question114" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question114" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question115">
+                    <label for="question115">A veces tengo problemas para dormir por la preocupación.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question115" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question115" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question115" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question115" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question115" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question116">
+                    <label for="question116">Me siento muy sensible a las críticas.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question116" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question116" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question116" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question116" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question116" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question117">
+                    <label for="question117">A menudo me siento emocionalmente inestable.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question117" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question117" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question117" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question117" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question117" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question118">
+                    <label for="question118">Me resulta difícil dejar de pensar en mis errores pasados.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question118" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question118" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question118" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question118" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question118" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question119">
+                    <label for="question119">A veces me siento incapaz de manejar mis emociones.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question119" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question119" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question119" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question119" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question119" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <div class="question" id="question120">
+                    <label for="question120">Me siento incómodo cuando enfrento situaciones difíciles.</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="question120" value="1" required> Muy en desacuerdo</label>
+                        <label><input type="radio" name="question120" value="2"> En desacuerdo</label>
+                        <label><input type="radio" name="question120" value="3"> Ni de acuerdo ni en desacuerdo</label>
+                        <label><input type="radio" name="question120" value="4"> De acuerdo</label>
+                        <label><input type="radio" name="question120" value="5"> Muy de acuerdo</label>
+                    </div>
+                </div>
+
+                <!-- Botones de navegación -->
+                <div>
+                    <span class="button" id="prevBtn" onclick="changeQuestion(-1)">Anterior</span>
+                    <span class="button" id="nextBtn" onclick="changeQuestion(1)">Siguiente</span>
+                    <input type="submit" id="submitBtn" class="button" style="display:none;" value="Enviar">
+                </div>
+            </form>
+        </div>
+
+        <script>
+            let currentQuestion = 1;
+            const totalQuestions = 120;
+
+            // Función para cambiar de pregunta
+            function changeQuestion(step) {
+                const currentInput = document.querySelector('input[name="question' + currentQuestion + '"]:checked');
+
+                // Validar si la opción está seleccionada
+                if (step === 1 && !currentInput && currentQuestion < totalQuestions) {
+                    alert("Por favor, selecciona una opción antes de continuar.");
+                    return; // Evitar avanzar si no hay opción seleccionada
+                }
+
+                // Ocultar la pregunta actual
+                document.getElementById("question" + currentQuestion).classList.remove("active");
+
+                // Cambiar la pregunta actual por la siguiente o anterior
+                currentQuestion += step;
+
+                // Limitar las preguntas dentro del rango permitido
+                if (currentQuestion < 1) {
+                    currentQuestion = 1;
+                } else if (currentQuestion > totalQuestions) {
+                    currentQuestion = totalQuestions;
+                }
+
+                // Mostrar la nueva pregunta
+                document.getElementById("question" + currentQuestion).classList.add("active");
+
+                // Mostrar el botón de "Enviar" solo en la última pregunta
+                if (currentQuestion === totalQuestions) {
+                    document.getElementById("nextBtn").style.display = "none";
+                    document.getElementById("submitBtn").style.display = "inline-block";
+                } else {
+                    document.getElementById("nextBtn").style.display = "inline-block";
+                    document.getElementById("submitBtn").style.display = "none";
+                }
+
+                // Mostrar el botón de "Anterior" solo después de la primera pregunta
+                if (currentQuestion === 1) {
+                    document.getElementById("prevBtn").style.display = "none";
+                } else {
+                    document.getElementById("prevBtn").style.display = "inline-block";
+                }
+            }
+
+            // Iniciar con la primera pregunta visible y el botón "Anterior" oculto
+            document.getElementById("prevBtn").style.display = "none";
+        </script>
+    </body>
+    </html>
+
+
+
+
+
+
+
+
